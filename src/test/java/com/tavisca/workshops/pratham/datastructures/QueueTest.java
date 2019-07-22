@@ -20,13 +20,13 @@ class QueueTest {
 
     @Test
     void isConstructedWithDefaultCapacity() {
-        assertEquals(Queue.defaultCapacity, new Queue().capacity());
+        assertEquals(1, new Queue().GetCapacity());
     }
 
     @Test
     void canBeConstructedWithSuppliedCapacity() {
         int capacity = 64;
-        assertEquals(capacity, new Queue(capacity).capacity());
+        assertEquals(capacity, new Queue(capacity).GetCapacity());
     }
 
     @Test
