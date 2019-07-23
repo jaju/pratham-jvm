@@ -16,8 +16,8 @@ dependencies {
 }
 
 configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_12
-    targetCompatibility = JavaVersion.VERSION_12
+    sourceCompatibility = JavaVersion.VERSION_1_10
+    targetCompatibility = JavaVersion.VERSION_1_10
 }
 
 tasks.register<Test>("hidden-tests")
