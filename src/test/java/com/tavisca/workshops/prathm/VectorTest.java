@@ -12,7 +12,7 @@ public class VectorTest {
         assertEquals(10, r.y);
         assertEquals('N', r.direction);
     }
-
+//**********************************************************************************************************************
     @Test
     void roverCanRotateLeftFromNorth() {
         Vector r = new Vector(10,10,'N');
@@ -40,7 +40,7 @@ public class VectorTest {
         Vector newVector = r.turnLeft();
         assertEquals('N', newVector.direction);
     }
-
+//**********************************************************************************************************************
     @Test
     void roverCanRotateRightFromNorth() {
         Vector r = new Vector(10,10,'N');
@@ -68,7 +68,7 @@ public class VectorTest {
         Vector newVector = r.turnRight();
         assertEquals('S', newVector.direction);
     }
-
+//**********************************************************************************************************************
     @Test
     void roverMovesInEast(){
         Rover r = new Rover(10, 10, 'E');
@@ -95,6 +95,63 @@ public class VectorTest {
         Rover r = new Rover(10, 10, 'S');
         Rover newRover = r.MoveForward();
         assertEquals(9, newRover.getPositionOfY());
+    }
+//**********************************************************************************************************************
+//**********************************************************************************************************************
+    @Test
+    void roverRotatingLeftFromNorth() {
+        Rover r = new Rover(10,10,'N');
+        Rover newRover = r.turnLeft();
+        assertEquals('W', newRover.direction());
+    }
+
+    @Test
+    void roverRotatingLeftFromWest() {
+        Rover r = new Rover(10,10,'W');
+        Rover newRover = r.turnLeft();
+        assertEquals('S', newRover.direction());
+    }
+
+    @Test
+    void roverRotatingLeftFromSouth() {
+        Rover r = new Rover(10,10,'S');
+        Rover newRover = r.turnLeft();
+        assertEquals('E', newRover.direction());
+    }
+
+    @Test
+    void roverRotatingLeftFromEast() {
+        Rover r = new Rover(10,10,'E');
+        Rover newRover = r.turnLeft();
+        assertEquals('N', newRover.direction());
+    }
+    //**********************************************************************************************************************
+    @Test
+    void roverRotatingRightFromNorth() {
+        Rover r = new Rover(10,10,'N');
+        Rover newRover = r.turnRight();
+        assertEquals('E', newRover.direction());
+    }
+
+    @Test
+    void roverRotatingRightFromWest() {
+        Rover r = new Rover(10,10,'W');
+        Rover newRover = r.turnRight();
+        assertEquals('N', newRover.direction());
+    }
+
+    @Test
+    void roverRotatingRightFromSouth() {
+        Rover r = new Rover(10,10,'S');
+        Rover newRover = r.turnRight();
+        assertEquals('W', newRover.direction());
+    }
+
+    @Test
+    void roverRotatingRightFromEast() {
+        Rover r = new Rover(10,10,'E');
+        Rover newRover = r.turnRight();
+        assertEquals('S', newRover.direction());
     }
 }
 

@@ -42,4 +42,16 @@ public class Rover {
     public int getPositionOfY() {
         return position.y;
     }
+
+    public Rover turnLeft() {
+        return new Rover(position.turnLeft());
+    }
+
+    public char direction() {
+        return position.direction;
+    }
+
+    public Rover turnRight() {
+        return new Rover(position.turnRight());
+    }
 }
