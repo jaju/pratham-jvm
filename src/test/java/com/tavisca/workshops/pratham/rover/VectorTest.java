@@ -18,28 +18,57 @@ public class VectorTest {
     void vectorCanRotateLeftFromNorth(){
         Vector r = new Vector(10, 10, 'N');
         Vector newVector = r.turnLeft();
-        assertEquals('W',newVector.direction());
+        assertEquals('W',newVector.direction);
     }
 
     @Test
     void vectorCanRotateLeftFromWest(){
         Vector r = new Vector(10, 10, 'W');
         Vector newVector = r.turnLeft();
-        assertEquals('S',newVector.direction());
+        assertEquals('S',newVector.direction);
     }
 
     @Test
     void vectorCanRotateLeftFromSouth(){
         Vector r = new Vector(10, 10, 'S');
         Vector newVector = r.turnLeft();
-        assertEquals('E',newVector.direction());
+        assertEquals('E',newVector.direction);
     }
 
     @Test
     void vectorCanRotateLeftFromEast(){
         Vector r = new Vector(10, 10, 'E');
         Vector newVector = r.turnLeft();
-        assertEquals('N',newVector.direction());
+        assertEquals('N',newVector.direction);
+    }
+
+
+    @Test
+    void vectorCanRotateRightFromNorth(){
+        Vector r = new Vector(10, 10, 'N');
+        Vector newVector = r.turnRight();
+        assertEquals('E',newVector.direction);
+    }
+
+    @Test
+    void vectorCanRotateRightFromWest(){
+        Vector r = new Vector(10, 10, 'W');
+        Vector newVector = r.turnRight();
+        assertEquals('N',newVector.direction);
+    }
+
+    @Test
+    void vectorCanRotateRightFromSouth(){
+        Vector r = new Vector(10, 10, 'S');
+        Vector newVector = r.turnRight();
+        assertEquals('W',newVector.direction);
+    }
+
+    @Test
+    void vectorCanRotateRightFromEast(){
+        Vector r = new Vector(10, 10, 'E');
+        Vector newVector = r.turnRight();
+        assertEquals('S',newVector.direction);
     }
 
 }

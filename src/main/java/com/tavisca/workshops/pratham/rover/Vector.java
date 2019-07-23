@@ -1,9 +1,25 @@
 package com.tavisca.workshops.pratham.rover;
 
+import java.util.HashMap;
+
+
 public class Vector {
-    private final int x;
-    private final int y;
-    private final char direction;
+    public final int x;
+    public final int y;
+    public final char direction;
+    private final HashMap<Character, Character> leftMap = new HashMap<>() {{
+        put('N', 'W');
+        put('W', 'S');
+        put('S', 'E');
+        put('E', 'N');
+    }};
+
+    private final HashMap<Character, Character> rightMap = new HashMap<>() {{
+        put('N', 'E');
+        put('E', 'S');
+        put('S', 'W');
+        put('W', 'N');
+    }};
 
     public Vector(int x, int y, char direction) {
 
@@ -25,13 +41,11 @@ public class Vector {
     }
 
     public Vector turnLeft() {
-        if(this.direction() == 'N')
-            return new Vector(this.x, this.y, 'W');
-        else if(this.direction() == 'W')
-            return new Vector(this.x, this.y, 'S');
-        else if(this.direction() == 'S')
-            return new Vector(this.x, this.y, 'E');
-        else
-            return new Vector(this.x, this.y, 'N');
+        return new Vector(this.x, this.y, leftMap.get(this.direction()));
     }
+
+    public Vector turnRight() {
+        return new Vector(this.x, this.y, rightMap.get(this.direction()));
+    }
+
 }
