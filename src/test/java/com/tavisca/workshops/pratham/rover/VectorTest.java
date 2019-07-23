@@ -168,5 +168,30 @@ class VectorTest {
         assertEquals('N',newVector.direction);
     }
 
+    @Test
+    void roverDoingComplementaryActionsOnTurnRightAndTurnLeft(){
+        Vector v = new Vector(10, 10, 'W');
+        Rover r = new Rover(v);
+        r.turnRight();
+        Vector newVector = r.turnLeft();
+        assertEquals(10, newVector.x);
+        assertEquals(10, newVector.y);
+        assertEquals('W',newVector.direction);
+    }
+
+    @Test
+    void roverWorkingOnInterpersedCommands(){
+        Vector v = new Vector(10, 10, 'W');
+        Rover r = new Rover(v);
+        r.turnRight();
+        r.move();
+        r.turnLeft();
+        r.move();
+        Vector newVector = r.turnLeft();
+        assertEquals(9, newVector.x);
+        assertEquals(11, newVector.y);
+        assertEquals('S',newVector.direction);
+    }
+
 
 }
