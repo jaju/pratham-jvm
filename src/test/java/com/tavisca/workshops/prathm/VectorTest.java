@@ -75,5 +75,26 @@ public class VectorTest {
         Rover newRover = r.MoveForward();
         assertEquals(11, newRover.getPositionOfX());
     }
+
+    @Test
+    void roverMovesInWest(){
+        Rover r = new Rover(10, 10, 'W');
+        Rover newRover = r.MoveForward();
+        assertEquals(9, newRover.getPositionOfX());
+    }
+
+    @Test
+    void roverMovesInNorth(){
+        Rover r = new Rover(10, 10, 'N');
+        Rover newRover = r.MoveForward();
+        assertEquals(11, newRover.getPositionOfY());
+    }
+
+    @Test
+    void roverMovesInSouth(){
+        Rover r = new Rover(10, 10, 'S');
+        Rover newRover = r.MoveForward();
+        assertEquals(9, newRover.getPositionOfY());
+    }
 }
 

@@ -38,4 +38,8 @@ public class Rover {
     public int getPositionOfX() {
         return position.x;
     }
+
+    public int getPositionOfY() {
+        return position.y;
+    }
 }
