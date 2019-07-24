@@ -49,6 +49,7 @@ public class Rover {
                 this.v = new Vector(this.v.x-1, this.v.y, this.v.direction);
                 break;
         }
+        //direction.move(this.v);
         return this.v;
     }
 

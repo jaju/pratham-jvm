@@ -40,13 +40,13 @@ public class RoverTest {
     void roverCanMoveAndRotateLeft(){
         Vector v = new Vector(10, 10, 'W');
         Rover r = new Rover(v);
-        Vector newVector = r.turnLeft();
+        r.turnLeft();
         for(int i = 0; i < 2; i++){
-            newVector = r.move();
+            v = r.move();
         }
-        assertEquals(10, newVector.x);
-        assertEquals(8, newVector.y);
-        assertEquals('S',newVector.direction);
+        assertEquals(10, v.x);
+        assertEquals(8, v.y);
+        assertEquals('S',v.direction);
     }
     @Test
     void roverCanMoveAndRotateRight(){
