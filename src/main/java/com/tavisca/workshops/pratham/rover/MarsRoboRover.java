@@ -6,8 +6,8 @@ public class MarsRoboRover
 	private static int x = 0;
 	private static String dir = "";
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args)
+	{
 		String currentPosition = "3 3 E";
 		String commands = "MMRMMRMRRM";
 
@@ -16,7 +16,8 @@ public class MarsRoboRover
 		y = Integer.valueOf(positions[1]);
 		dir = positions[2];
 
-		for (char command : commands.toCharArray()) {
+		for (char command : commands.toCharArray())
+		{
 			rove(command);
 		}
 

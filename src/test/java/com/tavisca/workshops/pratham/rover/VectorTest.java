@@ -10,9 +10,9 @@ public class VectorTest
     void vectorInitializesWithGivenDetails()
     {
         Vector r = new Vector(10, 10, 'N');
-        assertEquals(10, r.getX());
-        assertEquals(10, r.getX());
-        assertEquals(10, r.getX());
+        assertEquals(10, r.x);
+        assertEquals(10, r.y);
+        assertEquals('N', r.direction);
     }
 
     @Test
@@ -20,7 +20,7 @@ public class VectorTest
     {
         Vector r = new Vector(10, 10, 'N');
         Vector newVector = r.turnLeft();
-        assertEquals('W', newVector.getDirection());
+        assertEquals('W', newVector.direction);
     }
 
     @Test
@@ -28,7 +28,54 @@ public class VectorTest
     {
         Vector r = new Vector(10, 10, 'N');
         Vector newVector = r.turnRight();
-        assertEquals('W', newVector.getDirection());
+        assertEquals('E', newVector.direction);
     }
 
+    @Test
+    void  vectorCanRotateLeftFromWest()
+    {
+        Vector r = new Vector(10, 10, 'W');
+        Vector newVector = r.turnLeft();
+        assertEquals('S', newVector.direction);
+    }
+
+    @Test
+    void  vectorCanRotateRightFromWest()
+    {
+        Vector r = new Vector(10, 10, 'W');
+        Vector newVector = r.turnRight();
+        assertEquals('N', newVector.direction);
+    }
+
+    @Test
+    void  vectorCanRotateLeftFromSouth()
+    {
+        Vector r = new Vector(10, 10, 'S');
+        Vector newVector = r.turnLeft();
+        assertEquals('E', newVector.direction);
+    }
+
+    @Test
+    void  vectorCanRotateRightFromSouth()
+    {
+        Vector r = new Vector(10, 10, 'S');
+        Vector newVector = r.turnRight();
+        assertEquals('W', newVector.direction);
+    }
+
+    @Test
+    void  vectorCanRotateLeftFromEast()
+    {
+        Vector r = new Vector(10, 10, 'E');
+        Vector newVector = r.turnLeft();
+        assertEquals('N', newVector.direction);
+    }
+
+    @Test
+    void  vectorCanRotateRightFromEast()
+    {
+        Vector r = new Vector(10, 10, 'E');
+        Vector newVector = r.turnRight();
+        assertEquals('S', newVector.direction);
+    }
 }

@@ -4,30 +4,15 @@ import java.util.HashMap;
 
 public class Vector
 {
-    private final int x;
-    private final int y;
-    private final char direction;
+    public final int x;
+    public final int y;
+    public final char direction;
 
     public Vector(int x, int y, char direction)
     {
         this.x = x;
         this.y = y;
         this.direction = direction;
-    }
-
-    public int getY()
-    {
-        return y;
-    }
-
-    public char getDirection()
-    {
-        return direction;
-    }
-
-    public int getX()
-    {
-        return x;
     }
 
     private static HashMap<Character, Character> leftMap
