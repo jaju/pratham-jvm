@@ -180,4 +180,11 @@ class VectorTest {
     void wrongVectorDirectionThrowRuntimeException(){
         assertThrows(RuntimeException.class , () ->  new Vector(10, 10, 'P'));
     }
+    @Test
+    void roverCanTakeStringCommands(){
+        String commands = "MMRMMRMRRM";
+        Vector v = new Vector(3,3,'E');
+        Rover r = new Rover(v);
+        assertEquals("newPosition...5 1 E",r.Rove(commands));
+    }
 }

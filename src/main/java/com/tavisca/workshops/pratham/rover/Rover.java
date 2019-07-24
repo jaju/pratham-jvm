@@ -54,5 +54,22 @@ public class Rover {
         return v;
     }
 
+    public String Rove(String commands){
+        for(char command : commands.toCharArray()){
+            switch(command){
+                case 'L':
+                    this.turnLeft();
+                    break;
+                case 'R':
+                    this.turnRight();
+                    break;
+                case 'M':
+                    this.move();
+                    break;
+            }
+        }
+        return "newPosition..." + this.v.x + " " + this.v.y + " " + this.v.direction;
+    }
+
 
 }
