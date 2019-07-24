@@ -4,9 +4,6 @@ import java.util.HashMap;
 
 public class Rover {
 
-//    private int x;
-//    private int y;
-//    private char direction;
     private Vector v;
     private final HashMap<Character, Character> leftMap = new HashMap<>() {{
         put('N', 'W');

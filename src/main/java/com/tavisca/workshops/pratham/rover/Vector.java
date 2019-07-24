@@ -12,6 +12,4 @@ public class Vector {
         this.y = y;
         this.direction = direction;
     }
-
-
 }
