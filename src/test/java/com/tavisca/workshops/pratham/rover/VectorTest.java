@@ -19,7 +19,7 @@ public class VectorTest
     void  vectorCanRotateLeftFromNorth()
     {
         Vector r = new Vector(10, 10, Direction.NORTH);
-        Vector newVector = r.turnLeft();
+        Vector newVector = r.left();
         assertEquals(Direction.WEST, newVector.direction);
     }
 
@@ -27,7 +27,7 @@ public class VectorTest
     void  vectorCanRotateRightFromNorth()
     {
         Vector r = new Vector(10, 10, Direction.NORTH);
-        Vector newVector = r.turnRight();
+        Vector newVector = r.right();
         assertEquals(Direction.EAST, newVector.direction);
     }
 
@@ -35,7 +35,7 @@ public class VectorTest
     void  vectorCanRotateLeftFromWest()
     {
         Vector r = new Vector(10, 10, Direction.WEST);
-        Vector newVector = r.turnLeft();
+        Vector newVector = r.left();
         assertEquals(Direction.SOUTH, newVector.direction);
     }
 
@@ -43,7 +43,7 @@ public class VectorTest
     void  vectorCanRotateRightFromWest()
     {
         Vector r = new Vector(10, 10, Direction.WEST);
-        Vector newVector = r.turnRight();
+        Vector newVector = r.right();
         assertEquals(Direction.NORTH, newVector.direction);
     }
 
@@ -51,7 +51,7 @@ public class VectorTest
     void  vectorCanRotateLeftFromSouth()
     {
         Vector r = new Vector(10, 10, Direction.SOUTH);
-        Vector newVector = r.turnLeft();
+        Vector newVector = r.left();
         assertEquals(Direction.EAST, newVector.direction);
     }
 
@@ -59,7 +59,7 @@ public class VectorTest
     void  vectorCanRotateRightFromSouth()
     {
         Vector r = new Vector(10, 10, Direction.SOUTH);
-        Vector newVector = r.turnRight();
+        Vector newVector = r.right();
         assertEquals(Direction.WEST, newVector.direction);
     }
 
@@ -67,7 +67,7 @@ public class VectorTest
     void  vectorCanRotateLeftFromEast()
     {
         Vector r = new Vector(10, 10, Direction.EAST);
-        Vector newVector = r.turnLeft();
+        Vector newVector = r.left();
         assertEquals(Direction.NORTH, newVector.direction);
     }
 
@@ -75,7 +75,7 @@ public class VectorTest
     void  vectorCanRotateRightFromEast()
     {
         Vector r = new Vector(10, 10, Direction.EAST);
-        Vector newVector = r.turnRight();
+        Vector newVector = r.right();
         assertEquals(Direction.SOUTH, newVector.direction);
     }
 
@@ -83,7 +83,32 @@ public class VectorTest
     void vectorCanMoveForwardInNorth()
     {
         Vector r = new Vector(10, 10, Direction.NORTH);
-        Vector newVector = r.moveForward();
+        Vector newVector = r.next();
         assertEquals(11 , newVector.y);
+    }
+
+    @Test
+    void vectorCanMoveForwardInWest()
+    {
+        Vector r = new Vector(10, 10, Direction.WEST);
+        Vector newVector = r.next();
+        assertEquals(9 , newVector.x);
+    }
+
+    @Test
+    void vectorCanMoveForwardInSouth()
+    {
+        Vector r = new Vector(10, 10, Direction.SOUTH);
+        Vector newVector = r.next();
+        assertEquals(9 , newVector.y);
+    }
+
+    @Test
+    void vectorCanMoveForwardInEast()
+    {
+        Vector r = new Vector(10, 10, Direction.EAST);
+        Vector newVector = r.next();
+        assertEquals(Direction.EAST , newVector.direction);
+        assertEquals(11 , newVector.x);
     }
 }

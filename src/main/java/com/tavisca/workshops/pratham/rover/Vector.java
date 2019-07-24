@@ -24,6 +24,15 @@ public class Vector
                     put('S', Direction.SOUTH);
                 }};
 
+    public static HashMap<Direction, Character> directionToChar
+            = new HashMap<Direction, Character>()
+                {{
+                    put( Direction.NORTH, 'N');
+                    put(Direction.WEST, 'W');
+                    put(Direction.EAST, 'E');
+                    put(Direction.SOUTH, 'S');
+                }};
+
     private static HashMap<Direction, Direction> leftMap
             = new HashMap<Direction, Direction>()
                 {{
@@ -43,37 +52,37 @@ public class Vector
                     put(Direction.SOUTH, Direction.WEST);
                 }};
 
-    public Vector turnLeft()
+    public Vector left()
     {
         return new Vector(this.x, this.y, leftMap.get(this.direction));
     }
 
-    public Vector turnRight()
+    public Vector right()
     {
         return new Vector(this.x, this.y, rightMap.get(this.direction));
     }
 
     public Vector incrementX()
     {
-        return new Vector(this.x + 1, this.y, rightMap.get(this.direction));
+        return new Vector(this.x + 1, this.y, this.direction);
     }
 
     public Vector incrementY()
     {
-        return new Vector(this.x, this.y + 1, rightMap.get(this.direction));
+        return new Vector(this.x, this.y + 1, this.direction);
     }
 
     public Vector decrementX()
     {
-        return new Vector(this.x - 1, this.y, rightMap.get(this.direction));
+        return new Vector(this.x - 1, this.y, this.direction);
     }
 
     public Vector decrementY()
     {
-        return new Vector(this.x, this.y - 1, rightMap.get(this.direction));
+        return new Vector(this.x, this.y - 1, this.direction);
     }
 
-    public Vector moveForward()
+    public Vector next()
     {
         if(direction == Direction.NORTH)
             return incrementY();

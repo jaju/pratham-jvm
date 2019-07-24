@@ -4,10 +4,9 @@ public class Rover
 {
     Vector vector;
 
-    public void roverSetUp(int x, int y, char d)
+    public void roverSetUp(int x, int y, Direction d)
     {
-        Direction direction = Vector.charToDirection.get(d);
-        vector = new Vector(x, y, direction);
+        vector = new Vector(x, y, d);
     }
 
     public String getFinalPosition(String currentPosition, String commands)
@@ -16,16 +15,16 @@ public class Rover
 
         int x = Integer.valueOf(positions[0]);
         int y = Integer.valueOf(positions[1]);
-        char dir = positions[2].charAt(0);
+        Direction direction = Vector.charToDirection.get(positions[2].charAt(0));
 
-        roverSetUp(x, y, dir);
+        roverSetUp(x, y, direction);
 
         for (char command : commands.toCharArray())
         {
             rove(command);
         }
 
-        return vector.x + " " + vector.y + " " + vector.direction;
+        return vector.x + " " + vector.y + " " + Vector.directionToChar.get(vector.direction);
     }
 
     private void rove(char command)
@@ -33,15 +32,14 @@ public class Rover
         switch(command)
         {
             case 'L':
-                vector = vector.turnLeft();
+                vector = vector.left();
                 break;
             case 'R':
-                vector = vector.turnRight();
+                vector = vector.right();
                 break;
             case 'M':
-                vector = vector.moveForward();
+                vector = vector.next();
                 break;
-
         }
     }
 }
