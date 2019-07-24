@@ -6,33 +6,42 @@ public class Vector
 {
     public final int x;
     public final int y;
-    public final char direction;
+    public final Direction direction;
 
-    public Vector(int x, int y, char direction)
+    public Vector(int x, int y, Direction direction)
     {
         this.x = x;
         this.y = y;
         this.direction = direction;
     }
 
-    private static HashMap<Character, Character> leftMap
-            = new HashMap<Character, Character>()
+    public static HashMap<Character, Direction> charToDirection
+            = new HashMap<Character, Direction>()
                 {{
-                    put('N', 'W');
-                    put('W', 'S');
-                    put('E', 'N');
-                    put('S', 'E');
+                    put('N', Direction.NORTH);
+                    put('W', Direction.WEST);
+                    put('E', Direction.EAST);
+                    put('S', Direction.SOUTH);
+                }};
+
+    private static HashMap<Direction, Direction> leftMap
+            = new HashMap<Direction, Direction>()
+                {{
+                    put(Direction.NORTH, Direction.WEST);
+                    put(Direction.WEST, Direction.SOUTH);
+                    put(Direction.EAST, Direction.NORTH);
+                    put(Direction.SOUTH, Direction.EAST);
 
                 }};
 
-    private static HashMap<Character, Character> rightMap
-            = new HashMap<Character, Character>()
+    private static HashMap<Direction, Direction> rightMap
+            = new HashMap<Direction, Direction>()
                 {{
-                    put('N', 'E');
-                    put('W', 'N');
-                    put('E', 'S');
-                    put('S', 'W');
-            }};
+                    put(Direction.NORTH, Direction.EAST);
+                    put(Direction.WEST, Direction.NORTH);
+                    put(Direction.EAST, Direction.SOUTH);
+                    put(Direction.SOUTH, Direction.WEST);
+                }};
 
     public Vector turnLeft()
     {
@@ -44,4 +53,35 @@ public class Vector
         return new Vector(this.x, this.y, rightMap.get(this.direction));
     }
 
+    public Vector incrementX()
+    {
+        return new Vector(this.x + 1, this.y, rightMap.get(this.direction));
+    }
+
+    public Vector incrementY()
+    {
+        return new Vector(this.x, this.y + 1, rightMap.get(this.direction));
+    }
+
+    public Vector decrementX()
+    {
+        return new Vector(this.x - 1, this.y, rightMap.get(this.direction));
+    }
+
+    public Vector decrementY()
+    {
+        return new Vector(this.x, this.y - 1, rightMap.get(this.direction));
+    }
+
+    public Vector moveForward()
+    {
+        if(direction == Direction.NORTH)
+            return incrementY();
+        else if(direction == Direction.SOUTH)
+            return decrementY();
+        else if(direction == Direction.EAST)
+            return incrementX();
+        else
+            return decrementX();
+    }
 }

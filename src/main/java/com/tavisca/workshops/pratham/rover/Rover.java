@@ -2,13 +2,15 @@ package com.tavisca.workshops.pratham.rover;
 
 public class Rover
 {
-    Vector v;
-    public void roverSetUp(int x, int y, char direction)
+    Vector vector;
+
+    public void roverSetUp(int x, int y, char d)
     {
-        v = new Vector(x, y, direction);
+        Direction direction = Vector.charToDirection.get(d);
+        vector = new Vector(x, y, direction);
     }
 
-    public void getFinalPosition(String currentPosition, String commands)
+    public String getFinalPosition(String currentPosition, String commands)
     {
         String[] positions = currentPosition.split(" ");
 
@@ -22,10 +24,24 @@ public class Rover
         {
             rove(command);
         }
+
+        return vector.x + " " + vector.y + " " + vector.direction;
     }
 
     private void rove(char command)
     {
+        switch(command)
+        {
+            case 'L':
+                vector = vector.turnLeft();
+                break;
+            case 'R':
+                vector = vector.turnRight();
+                break;
+            case 'M':
+                vector = vector.moveForward();
+                break;
 
+        }
     }
 }
