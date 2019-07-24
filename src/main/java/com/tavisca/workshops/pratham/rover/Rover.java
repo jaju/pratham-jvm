@@ -35,23 +35,21 @@ public class Rover {
     }
 
     public Vector move() {
-        Vector v;
         switch (this.v.direction){
             case 'N' :
-                v =  new Vector(this.v.x, this.v.y+1, this.v.direction);
+                this.v =  new Vector(this.v.x, this.v.y+1, this.v.direction);
                 break;
             case 'S' :
-                v = new Vector(this.v.x, this.v.y-1, this.v.direction);
+                this.v = new Vector(this.v.x, this.v.y-1, this.v.direction);
                 break;
             case 'E' :
-                v = new Vector(this.v.x+1, this.v.y, this.v.direction);
+                this.v = new Vector(this.v.x+1, this.v.y, this.v.direction);
                 break;
-            default :
-                v = new Vector(this.v.x-1, this.v.y, this.v.direction);
+            case 'W' :
+                this.v = new Vector(this.v.x-1, this.v.y, this.v.direction);
                 break;
         }
-        this.v = v;
-        return v;
+        return this.v;
     }
 
     public String Rove(String commands){
