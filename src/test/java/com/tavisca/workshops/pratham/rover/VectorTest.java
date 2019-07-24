@@ -13,7 +13,6 @@ class VectorTest {
         assertEquals(10, v.y);
         assertEquals('N', v.direction);
     }
-
     @Test
     void vectorCanRotateLeftFromNorth(){
         Vector v = new Vector(10, 10, 'N');
@@ -21,7 +20,6 @@ class VectorTest {
         Vector newVector = r.turnLeft();
         assertEquals('W',newVector.direction);
     }
-
     @Test
     void vectorCanRotateLeftFromWest(){
         Vector v = new Vector(10, 10, 'W');
@@ -29,7 +27,6 @@ class VectorTest {
         Vector newVector = r.turnLeft();
         assertEquals('S',newVector.direction);
     }
-
     @Test
     void vectorCanRotateLeftFromSouth(){
         Vector v = new Vector(10, 10, 'S');
@@ -37,7 +34,6 @@ class VectorTest {
         Vector newVector = r.turnLeft();
         assertEquals('E',newVector.direction);
     }
-
     @Test
     void vectorCanRotateLeftFromEast(){
         Vector v = new Vector(10, 10, 'E');
@@ -45,8 +41,6 @@ class VectorTest {
         Vector newVector = r.turnLeft();
         assertEquals('N',newVector.direction);
     }
-
-
     @Test
     void vectorCanRotateRightFromNorth(){
         Vector v = new Vector(10, 10, 'N');
@@ -54,7 +48,6 @@ class VectorTest {
         Vector newVector = r.turnRight();
         assertEquals('E',newVector.direction);
     }
-
     @Test
     void vectorCanRotateRightFromWest(){
         Vector v = new Vector(10, 10, 'W');
@@ -62,7 +55,6 @@ class VectorTest {
         Vector newVector = r.turnRight();
         assertEquals('N',newVector.direction);
     }
-
     @Test
     void vectorCanRotateRightFromSouth(){
         Vector v = new Vector(10, 10, 'S');
@@ -70,7 +62,6 @@ class VectorTest {
         Vector newVector = r.turnRight();
         assertEquals('W',newVector.direction);
     }
-
     @Test
     void vectorCanRotateRightFromEast(){
         Vector v = new Vector(10, 10, 'E');
@@ -78,7 +69,6 @@ class VectorTest {
         Vector newVector = r.turnRight();
         assertEquals('S',newVector.direction);
     }
-
     @Test
     void roverCanMoveWhileFacingNorth(){
         Vector v = new Vector(10, 10, 'N');
@@ -115,7 +105,6 @@ class VectorTest {
         assertEquals(10, newVector.y);
         assertEquals('W',newVector.direction);
     }
-
     @Test
     void roverCanTakeMultipleMoveCommands(){
         Vector v = new Vector(10, 10, 'W');
@@ -128,7 +117,6 @@ class VectorTest {
         assertEquals(10, newVector.y);
         assertEquals('W',newVector.direction);
     }
-
     @Test
     void roverCanRotateMultipleTimes(){
         Vector v = new Vector(10, 10, 'W');
@@ -141,7 +129,6 @@ class VectorTest {
         assertEquals(10, newVector.y);
         assertEquals('N',newVector.direction);
     }
-
     @Test
     void roverCanMoveAndRotateLeft(){
         Vector v = new Vector(10, 10, 'W');
@@ -154,7 +141,6 @@ class VectorTest {
         assertEquals(8, newVector.y);
         assertEquals('S',newVector.direction);
     }
-
     @Test
     void roverCanMoveAndRotateRight(){
         Vector v = new Vector(10, 10, 'W');
@@ -167,7 +153,6 @@ class VectorTest {
         assertEquals(12, newVector.y);
         assertEquals('N',newVector.direction);
     }
-
     @Test
     void roverDoingComplementaryActionsOnTurnRightAndTurnLeft(){
         Vector v = new Vector(10, 10, 'W');
@@ -178,7 +163,6 @@ class VectorTest {
         assertEquals(10, newVector.y);
         assertEquals('W',newVector.direction);
     }
-
     @Test
     void roverWorkingOnInterpersedCommands(){
         Vector v = new Vector(10, 10, 'W');
@@ -192,8 +176,8 @@ class VectorTest {
         assertEquals(11, newVector.y);
         assertEquals('S',newVector.direction);
     }
-
-
-
-
+    @Test
+    void wrongVectorDirectionThrowRuntimeException(){
+        assertThrows(RuntimeException.class , () ->  new Vector(10, 10, 'P'));
+    }
 }
