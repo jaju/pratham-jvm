@@ -24,31 +24,36 @@ public class Rover {
     }
 
     public Vector turnLeft() {
-        this.v = new Vector(this.v.x, this.v.y, leftMap.get(this.v.direction));
+        //this.v = new Vector(this.v.x, this.v.y, leftMap.get(this.v.direction));
+
+        this.v = this.v.direction.turnLeft(this.v);
         return this.v;
     }
 
     public Vector turnRight() {
 
-        this.v = new Vector(this.v.x, this.v.y, rightMap.get(this.v.direction));
+        //this.v = new Vector(this.v.x, this.v.y, rightMap.get(this.v.direction));
+        this.v = this.v.direction.turnRight(this.v);
         return this.v;
     }
 
     public Vector move() {
-        switch (this.v.direction){
-            case 'N' :
-                this.v =  new Vector(this.v.x, this.v.y+1, this.v.direction);
-                break;
-            case 'S' :
-                this.v = new Vector(this.v.x, this.v.y-1, this.v.direction);
-                break;
-            case 'E' :
-                this.v = new Vector(this.v.x+1, this.v.y, this.v.direction);
-                break;
-            case 'W' :
-                this.v = new Vector(this.v.x-1, this.v.y, this.v.direction);
-                break;
-        }
+        Direction d = this.v.direction;
+        this.v = d.move(this.v);
+//        switch (this.v.direction){
+//            case 'N' :
+//                this.v =  new Vector(this.v.x, this.v.y+1, this.v.direction);
+//                break;
+//            case 'S' :
+//                this.v = new Vector(this.v.x, this.v.y-1, this.v.direction);
+//                break;
+//            case 'E' :
+//                this.v = new Vector(this.v.x+1, this.v.y, this.v.direction);
+//                break;
+//            case 'W' :
+//                this.v = new Vector(this.v.x-1, this.v.y, this.v.direction);
+//                break;
+//        }
         //direction.move(this.v);
         return this.v;
     }

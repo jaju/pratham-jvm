@@ -6,7 +6,9 @@ import java.util.HashSet;
 public class Vector {
     public final int x;
     public final int y;
-    public final char direction;
+    //public final char direction;
+
+    public final Direction direction;
 
     public final Set<Character> directions = new HashSet<Character>() {{
         add('N');
@@ -16,13 +18,10 @@ public class Vector {
     }};
 
 
-    public Vector(int x, int y, char direction) {
+    public Vector(int x, int y, Direction direction) {
 
         this.x = x;
         this.y = y;
-        if(directions.contains(direction))
-            this.direction = direction;
-        else
-            throw new RuntimeException("Direction not correct");
+        this.direction = direction;
     }
 }
