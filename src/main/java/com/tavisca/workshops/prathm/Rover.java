@@ -17,7 +17,7 @@ public class Rover {
     }
 
 
-    public Rover MoveForward() {
+    public Rover MoveForward() {//direction.move(vector)->children classes as E W N S
         switch (position.direction){
             case 'E':
                 position = new Vector(position.x + 1, position.y, position.direction);
@@ -32,7 +32,7 @@ public class Rover {
                 position = new Vector(position.x, position.y - 1, position.direction);
                 break;
         }
-        return new Rover(this.position);
+        return new Rover(position);
     }
 
     public int getPositionOfX() {
