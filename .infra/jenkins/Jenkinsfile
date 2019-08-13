@@ -5,7 +5,8 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am in build step"
-                    gradlew.bat build
+                    cd "C:/Users/apriyadarshi/Documents/GitHub/pratham-jvm"
+                    gradlew build
                 ''',
             label: "Building Project"
             }
