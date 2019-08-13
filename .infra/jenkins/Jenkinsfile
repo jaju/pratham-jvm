@@ -5,8 +5,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am in build step"
-                    cd "C:/Users/apriyadarshi/Documents/GitHub/pratham-jvm"
-                    ls
+                    chmod 777 ./gradlew
                     gradlew build
                 ''',
             label: "Building Project"
