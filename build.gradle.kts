@@ -35,7 +35,6 @@ tasks.named<Test>("test") {
     }
 }
 
-
 tasks.named<Test>("hidden-tests") {
     useJUnitPlatform {
         includeEngines("junit-jupiter")
