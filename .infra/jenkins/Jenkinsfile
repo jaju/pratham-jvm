@@ -6,9 +6,12 @@ pipeline {
                 bat script: '''
                     echo "I am in build step"
                     chmod 777 ./gradlew
+                    cd pratham-jvm
                     set JAVA_HOME="C:\\Program Files\\Java\\jdk-10"
                     echo $JAVA_HOME
                      .\\gradlew.bat build
+                    cd ..
+                    @RD /S /Q pratham-jvm
                 ''',
             label: "Building Project"
             }
