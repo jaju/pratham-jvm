@@ -28,7 +28,7 @@ public class Vector {
     }*/
 
     private static HashMap<Character, Character> leftMap
-            = new HashMap<>(){{
+            = new HashMap<Character, Character>(){{
                 put('N', 'W');
                 put('W', 'S');
                 put('S', 'E');
@@ -36,7 +36,7 @@ public class Vector {
     }};
 
     private static HashMap<Character, Character> rightMap
-            = new HashMap<>(){{
+            = new HashMap<Character, Character>(){{
                 put('N', 'E');
                 put('W', 'N');
                 put('S', 'W');
