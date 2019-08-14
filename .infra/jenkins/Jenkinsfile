@@ -1,15 +1,50 @@
 pipeline {
-    agent {label "machine"}
+    agent any
     stages {
-        stage('Example') {
+        stage('Build') {
             steps {
-               bat label: '', script: '''
-				set JAVA_HOME="C:\\Program Files\\Java\\jdk-10"
-				echo $JAVA_HOME
-				 .\\gradlew.bat build
-				cd ..
-				@RD /S /Q Merchant-Galaxy-Problem
-				'''
+                sh script: '''
+                    echo "I am in build step"
+                    chmod 777 ./gradlew
+                    ./gradlew build
+                ''',
+            label: "Building Project"
+            }
+        }
+        stage('Test')
+        {
+            steps {
+                sh script: '''
+                    echo "I am in Test step"
+                ''',
+            label: "Running Unit Test Cases"
+            }
+        }
+        stage('Static Code Analysis')
+        {
+            steps {
+                sh script: '''
+                    echo "I am in Sonarqube scan"
+                ''',
+            label: "Running Sonarqube Scan"
+            }
+        }
+        stage('Build DockerImage')
+        {
+            steps {
+                sh script: '''
+                    echo "I am Building DockerImage ="
+                ''',
+            label: "Building Docker Image"
+            }
+        }
+        stage('Publish DockerImage')
+        {
+            steps {
+                sh script: '''
+                    echo "I am Pubishing DockerImage ="
+                ''',
+            label: "Publishing Docker Image"
             }
         }
     }
