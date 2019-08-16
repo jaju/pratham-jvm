@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh script: '''
+                bat script: '''
                     echo "I am in build step"
                     chmod 777 ./gradlew
                     ./gradlew build
@@ -14,7 +14,7 @@ pipeline {
         stage('Test')
         {
             steps {
-                sh script: '''
+                bat script: '''
                     echo "I am in Test step"
                     chmod 777 ./gradlew
                     ./gradlew test
@@ -25,7 +25,7 @@ pipeline {
         stage('Static Code Analysis')
         {
             steps {
-                sh script: '''
+                bat script: '''
                     echo "I am in Sonarqube scan"
                 ''',
             label: "Running Sonarqube Scan"
@@ -34,7 +34,7 @@ pipeline {
         stage('Build DockerImage')
         {
             steps {
-                sh script: '''
+                bat script: '''
                     echo "I am Building DockerImage ="
                     docker build . -t "built-docker-through-jenkins"
                 ''',
@@ -44,7 +44,7 @@ pipeline {
         stage('Publish DockerImage')
         {
             steps {
-                sh script: '''
+                bat script: '''
                     echo "I am Pubishing DockerImage ="
                     docker push akshayrai75/a-rover:latest
                 ''',
