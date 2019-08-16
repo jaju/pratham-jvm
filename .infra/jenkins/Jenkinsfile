@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Building DockerImage ="
-                    sudo docker build . -t "built-docker-through-jenkins"
+                    docker build . -t "built-docker-through-jenkins"
                 ''',
             label: "Building Docker Image"
             }
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 sh script: '''
                     echo "I am Pubishing DockerImage ="
-                    sudo docker push akshayrai75/a-rover:latest
+                    docker push akshayrai75/a-rover:latest
                 ''',
             label: "Publishing Docker Image"
             }
