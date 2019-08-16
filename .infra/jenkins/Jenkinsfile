@@ -6,7 +6,7 @@ pipeline {
                 bat script: '''
                     echo "I am in build step"
                     chmod 777 ./gradlew.bat
-                    ./gradlew.bat build
+                    gradlew.bat build
                 ''',
             label: "Building Project"
             }
