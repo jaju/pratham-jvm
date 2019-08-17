@@ -46,6 +46,7 @@ pipeline {
             steps {
                 bat script: '''
                     echo "I am Pubishing DockerImage ="
+		    docker login -u 'akshayrai75' -p 'Humpy.123' 
                     docker push akshayrai75/a-rover:latest
                 ''',
             label: "Publishing Docker Image"
@@ -55,6 +56,9 @@ pipeline {
     }
     post{
     	always{
+		bat script:'''
+		docker logout
+		'''
 		deleteDir()
 	}
     }
