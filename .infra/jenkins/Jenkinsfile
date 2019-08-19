@@ -25,7 +25,7 @@ pipeline {
         {
             steps {
                 sh script: '''
-                    docker run -d --name sonarqube -p 9000:9000 sonarqube
+                    docker run -d --name sonar -p 9010:9000 sonarqube
                     echo "I am in Sonarqube scan"
                 ''',
             label: "Running Sonarqube Scan"
