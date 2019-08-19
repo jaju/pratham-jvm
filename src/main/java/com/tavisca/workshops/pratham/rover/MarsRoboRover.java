@@ -11,6 +11,7 @@ public class MarsRoboRover
 		String currentPosition = "3 3 E";
 		String commands = "MMRMMRMRRM";
 
+		System.out.println("MarsRoboRover");
 		String[] positions = currentPosition.split(" ");
 		x = Integer.valueOf(positions[0]);
 		y = Integer.valueOf(positions[1]);

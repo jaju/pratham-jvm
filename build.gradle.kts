@@ -3,7 +3,6 @@ plugins {
 }
 
 group = "com.tavisca.workshops"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -47,3 +46,4 @@ tasks.named<Test>("hidden-tests") {
         events("passed", "skipped", "failed")
     }
 }
+

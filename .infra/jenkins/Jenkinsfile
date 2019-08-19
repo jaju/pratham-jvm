@@ -33,9 +33,7 @@ pipeline {
         stage('Build DockerImage')
         {
             steps {
-                sh script: '''
-                    echo "I am Building DockerImage ="
-                ''',
+                sh "docker build . -t pratham-jvm"
             label: "Building Docker Image"
             }
         }
