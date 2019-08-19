@@ -2,6 +2,12 @@ plugins {
     java
 }
 
+val jar by tasks.getting(Jar::class) {
+    manifest {
+        attributes["Main-Class"] = "com.tavisca.workshops.prathm.RunRover"
+    }
+}
+
 group = "com.tavisca.workshops"
 version = "1.0-SNAPSHOT"
 
@@ -16,8 +22,8 @@ dependencies {
 }
 
 configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_12
-    targetCompatibility = JavaVersion.VERSION_12
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 tasks.register<Test>("hidden-tests")
@@ -34,7 +40,6 @@ tasks.named<Test>("test") {
         events("passed", "skipped", "failed")
     }
 }
-
 
 tasks.named<Test>("hidden-tests") {
     useJUnitPlatform {

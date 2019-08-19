@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                bat script: '''
+                    echo "I am in build step"
+                    gradlew.bat build
+                ''',
+            label: "Building Project"
+            }
+        }
+        stage('Test')
+        {
+            steps {
+                bat script: '''
+                    echo "I am in Test step"
+
+                    gradlew test
+                ''',
+            label: "Running Unit Test Cases"
+            }
+        }
+        stage('Static Code Analysis')
+        {
+            steps {
+                bat script: '''
+                    echo "I am in Sonarqube scan"
+                ''',
+            label: "Running Sonarqube Scan"
+            }
+        }
+        stage('Build DockerImage')
+        {
+            steps {
+                bat script: '''
+                    echo "I am Building DockerImage ="
+
+                    docker build . -t "built-docker-through-jenkins"
+                ''',
+            label: "Building Docker Image"
+            }
+        }
+        stage('Publish DockerImage')
+        {
+            steps {
+                bat script: '''
+                    echo "I am Pubishing DockerImage ="
+		    docker login -u=akshayrai75 -p=Humpy.123 
+                    docker push akshayrai75/a-rover:latest
+                ''',
+            label: "Publishing Docker Image"
+            }
+
+        }
+    }
+    post{
+    	always{
+		bat script:'''
+		docker logout
+		'''
+		deleteDir()
+	}
+    }
+}

@@ -20,13 +20,13 @@ class QueueTest {
 
     @Test
     void isConstructedWithDefaultCapacity() {
-        assertEquals(Queue.defaultCapacity, new Queue().capacity());
+        assertEquals(1, new Queue().GetCapacity());
     }
 
     @Test
     void canBeConstructedWithSuppliedCapacity() {
         int capacity = 64;
-        assertEquals(capacity, new Queue(capacity).capacity());
+        assertEquals(capacity, new Queue(capacity).GetCapacity());
     }
 
     @Test
@@ -87,7 +87,7 @@ class QueueTest {
     @Tag("hidden")
     void andSomeStressTesting() {
         int numLoops = 10;
-        var randomSource = new Random();
+        Random randomSource = new Random();
         for (int counter = 0; counter < numLoops; counter++) {
             int removalsCount = 2; randomSource.nextInt(128);
             int capacity = removalsCount * 3;
