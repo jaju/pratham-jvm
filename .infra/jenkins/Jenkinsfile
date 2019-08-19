@@ -39,7 +39,7 @@ pipeline {
         stage('Publish DockerImage')
         {
             steps {
-                sh "docker login -u="sachindcoder" -p="12345678qW@"
+                sh "docker login -u="sachindcoder" -p="12345678qW."
                     docker push sachindcoder/marsroborover:latest",
             }
         }
