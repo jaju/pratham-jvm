@@ -25,6 +25,7 @@ pipeline {
         {
             steps {
                 sh script: '''
+                     gradlew sonarqube
                     # docker run -d --name sonar -p 9010:9000 sonarqube
                     echo "I am in Sonarqube scan"
                 ''',
