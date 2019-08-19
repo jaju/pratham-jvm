@@ -34,7 +34,6 @@ pipeline {
         {
             steps {
                 sh "docker build . -t pratham-jvm"
-            label: "Building Docker Image"
             }
         }
         stage('Publish DockerImage')
