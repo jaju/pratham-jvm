@@ -33,16 +33,14 @@ pipeline {
         stage('Build DockerImage')
         {
             steps {
-                sh "docker build . -t pratham-jvm"
+                sh "docker build . -t sachindcoder/marsroborover"
             }
         }
         stage('Publish DockerImage')
         {
             steps {
-                sh script: '''
-                    echo "I am Pubishing DockerImage ="
-                ''',
-            label: "Publishing Docker Image"
+                sh "docker login -u="sachindcoder" -p="12345678qW@
+                    docker push sachindcoder/marsroborover:latest",
             }
         }
     }
