@@ -1,0 +1,63 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh script: '''
+                    echo "I am in build step"
+                    chmod 777 ./gradlew
+                    ./gradlew build
+                ''',
+            label: "Building Project"
+            }
+        }
+        stage('Test')
+        {
+            steps {
+                sh script: '''
+                    echo "I am in Test step"
+                    ./gradlew test
+                ''',
+            label: "Running Unit Test Cases"
+            }
+        }
+        stage('Static Code Analysis')
+        {
+            steps {
+                sh script: '''
+                    ./gradlew sonarqube \
+                      -Dsonar.host.url=http://sonarcloud.io \
+                      -Dsonar.organization=tavisca-rsachin\
+                      -Dsonar.login=ebdf7c3074f35ed4bb103f1ea5e5859149fec32a\
+                      -Dsonar.projectKey=tavisca-rsachin_pratham-jvm
+
+
+                    # ./gradlew sonarqube
+                    # docker run -d --name sonar -p 9010:9000 sonarqube
+                    echo "I am in Sonarqube scan"
+                ''',
+            label: "Running Sonarqube Scan"
+            }
+        }
+        stage('Build DockerImage')
+        {
+            steps {
+                sh "docker build . -t sachindcoder/marsroborover"
+            }
+        }
+        stage('Publish DockerImage')
+        {
+            steps {
+                sh script: '''
+                    docker login -u=sachindcoder -p=12345678qW.
+                    docker push sachindcoder/marsroborover:latest
+                   '''
+            }
+        }
+    }
+    post{
+        always{
+            deleteDir()
+        }
+    }
+}

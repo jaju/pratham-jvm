@@ -1,19 +1,24 @@
-public class MarsRoboRover {
+package com.tavisca.workshops.pratham.rover;
+
+public class MarsRoboRover
+{
 	private static int y = 0;
 	private static int x = 0;
 	private static String dir = "";
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args)
+	{
 		String currentPosition = "3 3 E";
 		String commands = "MMRMMRMRRM";
 
+		System.out.println("MarsRoboRover");
 		String[] positions = currentPosition.split(" ");
 		x = Integer.valueOf(positions[0]);
 		y = Integer.valueOf(positions[1]);
 		dir = positions[2];
 
-		for (char command : commands.toCharArray()) {
+		for (char command : commands.toCharArray())
+		{
 			rove(command);
 		}
 
